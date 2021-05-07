@@ -200,7 +200,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 def print_score(sgd_clf, X_train_prepared, y_train, X_test_prepared, y_test, train=True):
     if train:
         pred = sgd_clf.predict(X_train_prepared)
-        clf_report = pd.DataFrame(classification_report(y_train, pred, output_dict=True))
+        clf_report = classification_report(y_train, pred)
         print("Train Result:\n================================================")
         print(f"Accuracy Score: {accuracy_score(y_train, pred) * 100:.2f}%")
         print("_______________________________________________")
@@ -211,7 +211,7 @@ def print_score(sgd_clf, X_train_prepared, y_train, X_test_prepared, y_test, tra
 
     elif train == False:
         pred = sgd_clf.predict(X_test_prepared)
-        clf_report = pd.DataFrame(classification_report(y_test, pred, output_dict=True))
+        clf_report = classification_report(y_test, pred)
         print("Test Result:\n================================================")
         print(f"Accuracy Score: {accuracy_score(y_test, pred) * 100:.2f}%")
         print("_______________________________________________")
